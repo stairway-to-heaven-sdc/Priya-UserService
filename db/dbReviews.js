@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-const mongoURI = process.env.MONGOURI || 'mongodb://localhost/fec'
-mongoose.connect(mongoURI, {useNewUrlParser: true }, );
+const mongoURI = process.env.MONGOURI || 'mongodb://localhost/fec1'
+mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 const reviewSchema = new mongoose.Schema({
   uId: Number,
@@ -17,42 +17,42 @@ const reviewSchema = new mongoose.Schema({
 const Review = mongoose.model('Review', reviewSchema);
 
 const saveReview = (data) => {
-  return new Promise ((resolve,reject) => {
+  return new Promise((resolve, reject) => {
     Review.insertMany(data)
-    .then((docs) => resolve(docs))
-    .catch((err) => reject(err))
+      .then((docs) => resolve(docs))
+      .catch((err) => reject(err))
   });
 };
 
 const retrieveAllReviews = () => {
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     Review.find({})
-    .then((data) => resolve(data))
-    .catch((err) => reject(err))
+      .then((data) => resolve(data))
+      .catch((err) => reject(err))
   });
 };
 
 const retrieveByBiz = (bId) => {
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     Review.find({ bId })
-    .then((data) => resolve(data))
-    .catch((err) => reject(err))
+      .then((data) => resolve(data))
+      .catch((err) => reject(err))
   });
 };
 
 const retrieveByUser = (uId) => {
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     Review.find({ uId })
-    .then((data) => resolve(data))
-    .catch((err) => reject(err))
+      .then((data) => resolve(data))
+      .catch((err) => reject(err))
   });
 };
 
 const retrieve1Review = (rId) => {
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     Review.find({ rId })
-    .then((data) => resolve(data))
-    .catch((err) => reject(err))
+      .then((data) => resolve(data))
+      .catch((err) => reject(err))
   });
 };
 

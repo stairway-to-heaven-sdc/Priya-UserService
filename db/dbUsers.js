@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
-const mongoURI = process.env.MONGOURI || 'mongodb://localhost/fec';
-mongoose.connect(mongoURI, {useNewUrlParser: true });
+const mongoURI = process.env.MONGOURI || 'mongodb://localhost/fec1';
+mongoose.connect(mongoURI, { useNewUrlParser: true });
 
 const usersSchema = new mongoose.Schema({
   uId: Number,
-  username: String,
   city: String,
   state: String,
   photo: String,
@@ -18,18 +17,18 @@ const usersSchema = new mongoose.Schema({
 const User = mongoose.model('User', usersSchema);
 
 const saveUsers = (data) => {
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     User.insertMany(data)
-    .then((users) => resolve(users))
-    .catch((err) => reject(err));
+      .then((users) => resolve(users))
+      .catch((err) => reject(err));
   });
 };
 
 const retrieveUsersById = (uIds) => {
-  return new Promise ((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     User.find({ 'uId': { $in: uIds } })
-    .then((users) => resolve(users))
-    .catch((err) => reject(err));
+      .then((users) => resolve(users))
+      .catch((err) => reject(err));
   });
 };
 
