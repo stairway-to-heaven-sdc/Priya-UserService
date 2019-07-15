@@ -16,13 +16,33 @@ const usersSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', usersSchema);
 
-const saveUsers = (data) => {
+// const saveUsers = (data) => {
+//   return new Promise((resolve, reject) => {
+//     User.insertMany(data)
+//       .then((users) => resolve(users))
+//       .catch((err) => reject(err));
+//   });
+// };
+
+//Add
+const saveUser = (data) => {
+  let newUser = new User(data);
   return new Promise((resolve, reject) => {
-    User.insertMany(data)
+    newUser.save()
       .then((users) => resolve(users))
       .catch((err) => reject(err));
   });
 };
+
+//Get 
+const retrieveAllUsers = (uIds) => {
+  return new Promise((resolve, reject) => {
+    User.find({})
+      .then((users) => resolve(users))
+      .catch((err) => reject(err));
+  });
+};
+
 
 const retrieveUsersById = (uIds) => {
   return new Promise((resolve, reject) => {
@@ -32,5 +52,28 @@ const retrieveUsersById = (uIds) => {
   });
 };
 
-module.exports.saveUsers = saveUsers;
+//Delete
+const deleteUser = (id) => {
+  return new Promise((resolve, reject) => {
+    User.findByIdAndRemove({ '_id': id })
+      .then((user) => resolve(user))
+      .catch((err) => reject(err));
+  });
+}
+
+//Edit
+const editUser = (id, editInfo) => {
+  console.log(id, 'edit');
+  return new Promise((resolve, reject) => {
+    User.findByIdAndUpdate(id, editInfo)
+      .then((user) => resolve(user))
+      .catch((err) => reject(err));
+  });
+}
+
+module.exports.saveUser = saveUser;
 module.exports.retrieveUsersById = retrieveUsersById;
+module.exports.retrieveAllUsers = retrieveAllUsers;
+module.exports.deleteUser = deleteUser;
+module.exports.editUser = editUser;
+
