@@ -47,6 +47,7 @@ Path :  '/users/newuser/'
     "__v": 0
 }
 
+
 PUT Request: Updates the user
 Path :  '/users/edituser/:id'
 edited the city name
