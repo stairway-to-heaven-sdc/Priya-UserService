@@ -5,7 +5,7 @@
 - Path : '/user/:uId'
 - Postman Response ON: http://localhost:3002/user/9
 
-- {
+- `{
     "_id": "5d31403ab7d8a96d8ceb4857",
     "uId": 9,
     "city": "East Georgetteborough",
@@ -16,7 +16,7 @@
     "reviewCount": 309,
     "photoCount": 44,
     "__v": 0
-}
+}`
 
 **Post Request: Add a new USer**
 
@@ -33,7 +33,7 @@
   }
 
   - Postman Response  ON: http://localhost:3002/users/newuser/
-  - {
+  - `{
     "_id": "5d314162a17a76e468459918",
     "uId": 101,
     "city": "Mt.Vernon",
@@ -44,7 +44,7 @@
     "reviewCount": 10,
     "photoCount": 1,
     "__v": 0
-}
+}`
 
 **PUT Request: Updates the user**
 - Path :  '/users/edituser/:id'
@@ -61,7 +61,7 @@
   }
   - Postman response ONhttp://localhost:3002/users/edituser/5d314162a17a76e468459918
 
-  - {
+  - `{
     "_id": "5d314162a17a76e468459918",
     "uId": 101,
     "city": "Mt.Vernon",
@@ -72,12 +72,12 @@
     "reviewCount": 10,
     "photoCount": 1,
     "__v": 0
-}
+}`
 
 **Delete Request:Delets a user** 
 - Path :  '/users/deluser/:id'
 - Postman response ON: http://localhost:3002/users/deluser/5d314162a17a76e468459918
-`{
+- `{
     "_id": "5d314162a17a76e468459918",
     "uId": 101,
     "city": "Mount.Vernon",
