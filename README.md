@@ -3,8 +3,7 @@
 **Get Request**
 - Gets the user based upon the user id
 - Path : '/user/:uId'
--Postman Response:
- - http://localhost:3002/user/9
+- Postman Response ON: http://localhost:3002/user/9
 
 - {
     "_id": "5d31403ab7d8a96d8ceb4857",
@@ -33,8 +32,7 @@
     photoCount: 1,
   }
 
-  - Postman Response 
-  - http://localhost:3002/users/newuser/
+  - Postman Response  ON: http://localhost:3002/users/newuser/
   - {
     "_id": "5d314162a17a76e468459918",
     "uId": 101,
@@ -61,8 +59,7 @@
     reviewCount: 10,
     photoCount: 1,
   }
-  - Postman response 
-  - http://localhost:3002/users/edituser/5d314162a17a76e468459918
+  - Postman response ONhttp://localhost:3002/users/edituser/5d314162a17a76e468459918
 
   - {
     "_id": "5d314162a17a76e468459918",
@@ -79,8 +76,7 @@
 
 **Delete Request:Delets a user** 
 - Path :  '/users/deluser/:id'
-- Postman response 
-- http://localhost:3002/users/deluser/5d314162a17a76e468459918
+- Postman response ON: http://localhost:3002/users/deluser/5d314162a17a76e468459918
 {
     "_id": "5d314162a17a76e468459918",
     "uId": 101,
