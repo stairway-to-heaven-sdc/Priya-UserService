@@ -77,7 +77,7 @@
 **Delete Request:Delets a user** 
 - Path :  '/users/deluser/:id'
 - Postman response ON: http://localhost:3002/users/deluser/5d314162a17a76e468459918
-{
+`{
     "_id": "5d314162a17a76e468459918",
     "uId": 101,
     "city": "Mount.Vernon",
@@ -89,3 +89,4 @@
     "photoCount": 1,
     "__v": 0
 }
+`
