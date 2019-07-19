@@ -1,6 +1,6 @@
 # Priya-UserService
 
-Get Request
+**Get Request**
 :Gets the user based upon the user id
 Path : '/user/:uId'
 Postman Response:
@@ -19,7 +19,8 @@ http://localhost:3002/user/9
     "__v": 0
 }
 
-Post Request: Add a new USer 
+**Post Request: Add a new USer**
+
 Path :  '/users/newuser/'
   var newUser = {
     uId: 101,
@@ -31,7 +32,7 @@ Path :  '/users/newuser/'
     reviewCount: 10,
     photoCount: 1,
   }
-  
+
   Postman Response 
   http://localhost:3002/users/newuser/
   {
@@ -47,7 +48,7 @@ Path :  '/users/newuser/'
     "__v": 0
 }
 
-PUT Request: Updates the user
+**PUT Request: Updates the user**
 Path :  '/users/edituser/:id'
 edited the city name
 var editUser = {
@@ -76,7 +77,7 @@ var editUser = {
     "__v": 0
 }
 
-Delete Request:Delets a user 
+**Delete Request:Delets a user** 
 Path :  '/users/deluser/:id'
 Postman response 
 http://localhost:3002/users/deluser/5d314162a17a76e468459918
