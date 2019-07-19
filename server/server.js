@@ -65,7 +65,7 @@ app.get('/user/:uId', (req, res) => {
     .catch((err) => console.log(err));
 });
 
-app.get('/allluser/', (req, res) => {
+app.get('/alluser/', (req, res) => {
   retrieveAllUsers()
     .then((user) => {
       res.send(user);

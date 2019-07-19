@@ -1,7 +1,7 @@
 let faker = require('faker');
 let axios = require('axios');
 let _ = require('lodash');
-let { saveUsers } = require('./dbUsers');
+let { saveUsers, deleteAllUser } = require('./dbUsers');
 require('dotenv').config();
 
 const seedUsers = () => {

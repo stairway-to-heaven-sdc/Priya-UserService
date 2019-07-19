@@ -16,13 +16,13 @@ const usersSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', usersSchema);
 
-// const saveUsers = (data) => {
-//   return new Promise((resolve, reject) => {
-//     User.insertMany(data)
-//       .then((users) => resolve(users))
-//       .catch((err) => reject(err));
-//   });
-// };
+const saveUsers = (data) => {
+  return new Promise((resolve, reject) => {
+    User.insertMany(data)
+      .then((users) => resolve(users))
+      .catch((err) => reject(err));
+  });
+};
 
 //Add
 const saveUser = (data) => {
@@ -71,9 +71,20 @@ const editUser = (id, editInfo) => {
   });
 }
 
+const deleteAllUser = () => {
+  return new Promise((resolve, reject) => {
+    User.deleteMany({})
+      .then((user) => resolve(user))
+      .catch((err) => reject(err));
+  });
+}
+
+
 module.exports.saveUser = saveUser;
 module.exports.retrieveUsersById = retrieveUsersById;
 module.exports.retrieveAllUsers = retrieveAllUsers;
 module.exports.deleteUser = deleteUser;
 module.exports.editUser = editUser;
+module.exports.saveUsers = saveUsers;
+module.exports.deleteAllUser = deleteAllUser;
 
