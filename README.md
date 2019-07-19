@@ -1,7 +1,6 @@
 # Priya-UserService
 
-**Get Request**
-- Gets the user based upon the user id
+**Get Request: Gets the user based upon the user id**
 - Path : '/user/:uId'
 - Postman Response ON: http://localhost:3002/user/9
 
@@ -18,8 +17,7 @@
     "__v": 0
 }`
 
-**Post Request: Add a new USer**
-
+**Post Request: Add a new user**
 - Path :  '/users/newuser/'
   var newUser = {
     uId: 101,
