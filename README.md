@@ -32,8 +32,8 @@
     photoCount: 1,
   }
 
-  - Postman Response  ON: http://localhost:3002/users/newuser/
-  - `{
+- Postman Response  ON: http://localhost:3002/users/newuser/
+- `{
     "_id": "5d314162a17a76e468459918",
     "uId": 101,
     "city": "Mt.Vernon",
@@ -59,9 +59,9 @@
     reviewCount: 10,
     photoCount: 1,
   }
-  - Postman response ONhttp://localhost:3002/users/edituser/5d314162a17a76e468459918
+- Postman response ONhttp://localhost:3002/users/edituser/5d314162a17a76e468459918
 
-  - `{
+- `{
     "_id": "5d314162a17a76e468459918",
     "uId": 101,
     "city": "Mt.Vernon",
