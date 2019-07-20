@@ -16,7 +16,7 @@ const usersSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', usersSchema);
 
-const saveUsers = (data) => {
+const saveUsers = async (data) => {
   return new Promise((resolve, reject) => {
     User.insertMany(data)
       .then((users) => resolve(users))
@@ -25,7 +25,7 @@ const saveUsers = (data) => {
 };
 
 //Add
-const saveUser = (data) => {
+const saveUser = async (data) => {
   let newUser = new User(data);
   return new Promise((resolve, reject) => {
     newUser.save()
@@ -38,7 +38,7 @@ const saveUser = (data) => {
 const retrieveAllUsers = (uIds) => {
   return new Promise((resolve, reject) => {
     User.find({})
-      .then((users) => resolve(users))
+      .then((users) => resolve(`${users.length}`))
       .catch((err) => reject(err));
   });
 };
