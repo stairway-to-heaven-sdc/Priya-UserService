@@ -11,13 +11,13 @@ function seedUsers() {
   let config = { headers: { 'X-API-KEY': process.env.UI_FACES_API } };
   axios.get('https://uifaces.co/api?limit=100', config)
     .then(({ data }) => {
-      S(data)
+      Save(data)
     })
     .catch((err) => console.log(err));
 
 };
 
-async function S(data) {
+async function Save(data) {
   let count = 0;
   const userdata = JSON.parse(fs.readFileSync(dataJson, 'utf-8'));
   for (let i = 0; i < 25; i++) {
