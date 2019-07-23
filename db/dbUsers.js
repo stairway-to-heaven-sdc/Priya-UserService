@@ -17,6 +17,7 @@ const usersSchema = new mongoose.Schema({
 const User = mongoose.model('User', usersSchema);
 
 const saveUsers = async (data) => {
+  // console.log(data);
   return new Promise((resolve, reject) => {
     User.insertMany(data)
       .then((users) => resolve(users))

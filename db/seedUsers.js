@@ -19,14 +19,25 @@ function seedUsers() {
 
 async function Save(data) {
   let count = 0;
+  //create the json with 1000000 records
+  createUsers(data);
+  let user400k = [];
+  //parse the json file
   const userdata = JSON.parse(fs.readFileSync(dataJson, 'utf-8'));
-  for (let i = 0; i < 25; i++) {
-    createUsers(data, i);
-    if (count == i) {
-      await Save400KUser(userdata);
-      count++;
+  for (let i = 0; i < 10000000; i++) {
+    user400k.push(userdata[i]);
+    count++;
+    //
+    if (count == 400000) {
+      console.log(user400k.length);
+      //Save 400k user at  a time in mongo
+      await Save400KUser(user400k);
+      count = 0;
+      user400k = null;
+      user400k = [];
     }
   }
+
 }
 
 async function Save400KUser(userdata) {
@@ -45,12 +56,12 @@ const storeData = (data, path) => {
 
 }
 
-const createUsers = async (data, i) => {
+const createUsers = async (data) => {
   let users = [];
-  let count = i * 400000 + 1;
+  let count = 1;
   console.log(count);
   let eliteStatus = [`Elite '19`, '', ''];
-  for (let i = 0; i < 4000; i++) {
+  for (let i = 0; i < 10000; i++) {
     for (let key of data) {
       let user = {
         uId: count,
@@ -67,8 +78,7 @@ const createUsers = async (data, i) => {
       count++;
     }
   }
-  console.log(users.length);
-
+  //console.log(users.length);
   storeData(users, dataJson);
   // return users;
 };
