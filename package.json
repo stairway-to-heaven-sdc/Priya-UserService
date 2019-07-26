@@ -8,6 +8,7 @@
     "seed": "node db/seedReviews.js",
     "seed2": "node db/seedUsers.js",
     "start": "nodemon server/server.js",
+    "pssql": "node db/dbPostgressSQL.js",
     "build:dev": "webpack --config webpack.dev.js --watch",
     "build": "webpack --config webpack.prod.js --watch"
   },
@@ -48,8 +49,10 @@
     "lodash": "^4.17.11",
     "mongodb": "^3.2.4",
     "mongoose": "^5.5.7",
+    "pg": "^7.11.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "sql": "^0.78.0"
   },
   "jest": {
     "setupFilesAfterEnv": [
