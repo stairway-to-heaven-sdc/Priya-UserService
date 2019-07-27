@@ -11,6 +11,7 @@ const writeUsers = fs.createWriteStream(inputFile);
 writeUsers.write('username,city,state,photo,elite,friendcount,reviewcount,photocount\n', 'utf8');
 
 function SaveDB() {
+    // makes api call to get images
     let config = { headers: { 'X-API-KEY': process.env.UI_FACES_API } };
     axios.get('https://uifaces.co/api?limit=10', config)
         .then(({ data }) => {
@@ -21,6 +22,7 @@ function SaveDB() {
         .catch((err) => console.log(err));
 }
 
+//Creates a 10 million csv file 
 function writeTenMillionUsers(writer, encoding, apiData, callback) {
     let i = 10000000;
     let userNameArray = [];
@@ -53,6 +55,7 @@ function writeTenMillionUsers(writer, encoding, apiData, callback) {
             if (i === 0) {
                 writer.write(data, encoding, callback);
                 console.log("End file write");
+                //calls the method to save to postgress once done creating csv
                 SaveToPostgres();
             } else {
                 // see if we should continue, or wait
@@ -78,6 +81,7 @@ function SaveToPostgres() {
         database: "postgres"
     });
 
+    //Conects to postgress servers
     client.connect()
         .then(() => console.log("Connected sucessfully"))
         .catch(e => console.log(e));
@@ -88,6 +92,7 @@ function SaveToPostgres() {
         }
     });
 
+    //copys the data from csv to postgress using the copy command
     client.query(`COPY userinfo(username, city, state, photo, elite, friendcount, reviewcount, photocount ) FROM '${inputFile}' WITH delimiter ','  CSV HEADER`, (err, res) => {
         if (err) {
             console.log(err);
@@ -98,29 +103,3 @@ function SaveToPostgres() {
 }
 
 SaveDB();
-
-/*
-var fileStream = fs.createReadStream(inputFile);
-fileStream.on('error', (error) => {
-    console.log(`Error in reading file: ${error}`);
-    //fileStream.destroy();
-});
-
-for (let i = 0; i < 40000; i++) {
-    CopyPost();
-}
-
-async function CopyPost() {
-    var stream = client.query(copyFrom(`COPY userinfo(username, city, state, photo, elite, friendcount, reviewcount, photocount ) FROM '${inputFile}' WITH delimiter ','  CSV HEADER`))
-    stream.on('error', (error) => {
-        console.log(`Error in copy command: ${error}`)
-    })
-    stream.on('end', () => {
-        console.log(`Completed loading data into userinfo`)
-        client.end()
-    })
-    await fileStream.pipe(stream);
-}
-*/
-
-//SaveDB();
