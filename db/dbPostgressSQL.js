@@ -7,7 +7,6 @@ let _ = require('lodash');
 let fs = require('fs');
 var dataJson = './db/dbData/user.json';
 
-
 const client = new Client({
     user: "postgres",
     password: "root18",
@@ -38,12 +37,11 @@ client.query('CREATE TABLE userinfo(uId serial Primary Key, username varchar(500
     if (err) {
         console.log(err);
     }
-    //client.end();
 });
 
 function SaveDB() {
     let config = { headers: { 'X-API-KEY': process.env.UI_FACES_API } };
-    axios.get('https://uifaces.co/api?limit=10', config)
+    axios.get('https://uifaces.co/api?limit=100', config)
         .then(({ data }) => {
             SavePostgress(data)
         })
@@ -55,10 +53,10 @@ async function SavePostgress(data) {
     createUsers(data);
     let user100 = [];
     const userdata = JSON.parse(fs.readFileSync(dataJson, 'utf-8'));
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10003000; i++) {
         user100.push(userdata[i]);
         count++;        //
-        if (count == 10) {
+        if (count == 7000) {
             //Save 400k user at  a time in mongo
             await Save100User(user100);
             count = 0;
@@ -69,13 +67,12 @@ async function SavePostgress(data) {
 } //SavePostgress
 
 async function Save100User(user100) {
-    console.log(user100);
     let query = userinfo.insert(user100).returning(userinfo.uid).toQuery();
-    console.log(query);
     await client.query(query, (err, result) => {
         if (err) {
             console.log(err);
         }
+        console.log(result);
     })
 }
 
@@ -84,7 +81,7 @@ const createUsers = async (data) => {
     let count = 1;
     console.log(count);
     let eliteStatus = [`Elite '19`, '', ''];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 100030; i++) {
         for (let key of data) {
             let user = {
                 uid: count,
