@@ -105,7 +105,7 @@ const createUsers = async (data) => {
     let count = 1;
     console.log(count);
     let eliteStatus = [`Elite '19`, '', ''];
-    for (let i = 0; i < 1; i++) {
+    for (let i = 0; i < 10000; i++) {
         for (let key of data) {
             let user = {
                 uid: count,
