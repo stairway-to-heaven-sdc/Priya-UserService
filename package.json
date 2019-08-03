@@ -10,6 +10,7 @@
     "start": "nodemon server/server.js",
     "pssql": "node db/dbPostgressSQL.js",
     "pvql": "node db/dbPostgress2.js",
+    "pcas": "node db/dbCassandra.js",
     "build:dev": "webpack --config webpack.dev.js --watch",
     "build": "webpack --config webpack.prod.js --watch"
   },
@@ -47,6 +48,7 @@
     "csv-writer": "^1.5.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
+    "express-cassandra": "^2.3.0",
     "faker": "^4.1.0",
     "lodash": "^4.17.11",
     "mongodb": "^3.2.4",

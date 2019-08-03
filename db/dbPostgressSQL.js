@@ -52,12 +52,14 @@ client.connect()
     .then(() => console.log("Connected sucessfully"))
     .catch(e => console.log(e));
 
-// client.query('CREATE TABLE userinfo(uId serial Primary Key, username varchar(500), city varchar(200), state varchar(200), photo varchar(500), elite varchar(200), friendcount integer, reviewcount integer, photocount integer)', (err, res) => {
-//     if (err) {
-//         console.log(err);
-//     }
-// });
+client.query('SELECT * FROM public.userinfo order by uid desc limit 10', (err, res) => {
+    if (err) {
+        console.log(err);
+    }
+    console.log(res);
+});
 
+/*
 function SaveDB() {
     let config = { headers: { 'X-API-KEY': process.env.UI_FACES_API } };
     axios.get('https://uifaces.co/api?limit=100', config)
@@ -87,7 +89,7 @@ async function SavePostgress(data) {
                 j = 0;
             });
         }
-    }*/
+    }
 } //SavePostgress
 
 async function Save100User(user100) {
@@ -140,4 +142,5 @@ const storeData = (data, path) => {
 
 }
 
-SaveDB();
+//SaveDB();
+*/
