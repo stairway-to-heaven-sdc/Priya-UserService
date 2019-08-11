@@ -6,6 +6,8 @@ let faker = require('faker');
 let _ = require('lodash');
 let fs = require('fs');
 const { exec } = require('child_process');
+let date1;
+let date2;
 
 var inputFile = `${path.join(__dirname, '/dbData/test1.csv')}`;
 console.log(inputFile);
@@ -20,6 +22,7 @@ function SaveDB() {
     let config = { headers: { 'X-API-KEY': process.env.UI_FACES_API } };
     axios.get('https://uifaces.co/api?limit=10', config)
         .then(({ data }) => {
+            date1 = new Date();
             writeTenMillionUsers(writeUsers, 'utf-8', data, () => {
                 writeUsers.end()
             });
@@ -96,6 +99,12 @@ function SaveToCasandra() {
                     //  console.error(err);
                 } else {
                     console.log(out);
+                    date2 = new Date();
+                    console.log(date1);
+                    console.log(date2);
+                    var res = Math.abs(date2 - date1) / 1000;
+                    var minutes = Math.floor(res / 60) % 60;
+                    console.log(`Total time to load 10miiliom record is ${minutes}min`);
                 }
             });
         }).
