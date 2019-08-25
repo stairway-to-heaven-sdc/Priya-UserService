@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const nr = require('newrelic');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3002;
 const { retrieveByBiz, retrieveByUser, retrieve1Review } = require('../db/dbReviews');
