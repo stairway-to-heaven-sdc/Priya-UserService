@@ -11,11 +11,11 @@ console.log(process.env.user);
 // });
 
 const client = new Client({
-    user: "power_user",
-    password: "root18",
-    host: "ec2-18-214-99-151.compute-1.amazonaws.com",
-    port: '5432',
-    database: "postgres"
+    user: "",
+    password: "",
+    host: "",
+    port: '',
+    database: ""
 });
 
 client.connect()
