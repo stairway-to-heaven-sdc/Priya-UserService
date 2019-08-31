@@ -1,16 +1,17 @@
+const nr = require('newrelic');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 3002;
 const { retrieveByBiz, retrieveByUser, retrieve1Review } = require('../db/dbReviews');
-const { saveUser, retrieveUsersById, retrieveAllUsers, deleteUser, editUser } = require('../db/dbUsers');
+// const { saveUser, retrieveUsersById, retrieveAllUsers, deleteUser, editUser } = require('../db/dbUsers');
+const { retrieveUsersById, retrieveAllUsers, saveUser, deleteUser, editUser } = require('../db/dbPostgressUser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/reviews/business/:bId', (req, res) => {
-  let { bId } = req.params;
-  retrieveByBiz(bId).then((reviews) => {
+  let { bId } = req.params; retrieveByBiz(bId).then((reviews) => {
     res.send({ reviews });
   })
     .catch((err) => console.log(err));
@@ -60,6 +61,8 @@ app.get('/user/:uId', (req, res) => {
   let { uId } = req.params;
   retrieveUsersById([uId])
     .then((user) => {
+      debugger;
+      console.log(user);
       res.send(user[0]);
     })
     .catch((err) => console.log(err));
@@ -76,11 +79,12 @@ app.get('/alluser/', (req, res) => {
 //Add user 
 app.post('/users/newuser/', (req, res) => {
   var newUser = {
-    uId: 101,
+    buisnessId: 101,
+    userName: "Alex Telsa",
     city: 'Mt.Vernon',
     state: 'NY',
     photo: 'https://randomuser.me/api/portraits/women/68.jpg',
-    elite: 'Elite \'19',
+    elite: 'Elite 19',
     friendCount: 52,
     reviewCount: 10,
     photoCount: 1,
@@ -108,11 +112,12 @@ app.put('/users/edituser/:id', (req, res) => {
   console.log(req.params);
   let id = req.params.id;
   var newUser = {
-    uId: 101,
+    buisnessId: 102,
+    userName: "Priya Raj",
     city: 'Mount.Vernon',
     state: 'NY',
     photo: 'https://randomuser.me/api/portraits/women/68.jpg',
-    elite: 'Elite \'19',
+    elite: 'Elite 19',
     friendCount: 52,
     reviewCount: 10,
     photoCount: 1,
