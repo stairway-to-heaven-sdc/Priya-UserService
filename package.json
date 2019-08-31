@@ -7,7 +7,7 @@
     "test": "jest --coverage",
     "seed": "node db/seedReviews.js",
     "seed2": "node db/seedUsers.js",
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "pssql": "node db/dbPostgressSQL.js",
     "pvql": "node db/dbPostgress2.js",
     "pcas": "node db/dbCassandra.js",
