@@ -5,7 +5,8 @@ let faker = require('faker');
 let _ = require('lodash');
 let fs = require('fs');
 const path = require('path');
-var inputFile = path.join(__dirname, '/dbData/test2.csv');
+var inputFile = path.join('~/dbData/test3.csv');
+console.log(inputFile);
 let date1;
 let date2;
 
@@ -83,13 +84,7 @@ function writeTenMillionUsers(writer, encoding, apiData, callback) {
 }
 
 function SaveToPostgres() {
-    const client = new Client({
-        user: "postgres",
-        password: "root18",
-        host: "localhost",
-        port: "5432",
-        database: "postgres"
-    });
+
 
     //Conects to postgress servers
     client.connect()
@@ -103,19 +98,20 @@ function SaveToPostgres() {
     });
 
     //copys the data from csv to postgress using the copy command
-    client.query(`COPY userinfo(buisnessId, username, city, state, photo, elite, friendcount, reviewcount, photocount ) FROM '${inputFile}' WITH delimiter ','  CSV HEADER`, (err, res) => {
-        if (err) {
-            console.log(err);
-        }
-        console.log("done with adding 10 million records");
-        date2 = new Date();
-        console.log(date1);
-        console.log(date2);
-        var res = Math.abs(date2 - date1) / 1000;
-        var minutes = Math.floor(res / 60) % 60;
-        console.log(`Total time to load 10miiliom record is ${minutes}min`);
-    });
-
+    //client.query(`insert into userinfo(buisnessId, username, city, state, photo, elite, friendcount, reviewcount, photocount) values (1, 'PP',' tt', 'tt', 'zz', 'dd', 5, 10, //5 )`,
+    client.query(`COPY userinfo(buisnessId, username, city, state, photo, elite, friendcount, reviewcount, photocount ) FROM '${inputFile}' WITH delimiter ','  CSV HEADER`,
+        (err, res) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log("done with adding 10 million records");
+            date2 = new Date();
+            console.log(date1);
+            console.log(date2);
+            var res = Math.abs(date2 - date1) / 1000;
+            var minutes = Math.floor(res / 60) % 60;
+            console.log(`Total time to load 10miiliom record is ${minutes}min`);
+        });
 }
-
 SaveDB();
+//SaveToPostgres();

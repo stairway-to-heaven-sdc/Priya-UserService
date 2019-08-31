@@ -35,6 +35,8 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.3.5",
+    "grafana": "^1.0.1",
+    "influxdb": "0.0.1",
     "jest": "^24.8.0",
     "nodemon": "^1.19.0",
     "react-test-renderer": "^16.8.6",
@@ -44,6 +46,7 @@
   },
   "dependencies": {
     "@elastic/elasticsearch": "^7.0.0",
+    "artillery": "^1.6.0-28",
     "axios": "^0.19.0",
     "csv-writer": "^1.5.0",
     "dotenv": "^8.0.0",
@@ -56,6 +59,7 @@
     "newrelic": "^5.11.0",
     "pg": "^7.11.0",
     "pg-copy-streams": "^2.2.2",
+    "pm2": "^3.5.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "sql": "^0.78.0"

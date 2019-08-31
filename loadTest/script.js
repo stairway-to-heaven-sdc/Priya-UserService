@@ -3,15 +3,19 @@ import { check, sleep } from "k6";
 
 export let options = {
     stages: [
-        { duration: "60s", target: 100 },
-        { duration: "1m30s", target: 200 },
-        { duration: "60s", target: 300 },
-        { duration: "60s", target: 400 },
-        { duration: "1m30s", target: 600 },
-        { duration: "60s", target: 700 },
-        { duration: "60s", target: 800 },
-        { duration: "1m30s", target: 900 },
-        { duration: "60s", target: 1000 },
+        { duration: "30s", target: 100 },
+        { duration: "30s", target: 400 },
+        { duration: "30s", target: 900 },
+        { duration: "1m", target: 1000 },
+        { duration: "10s", target: 3000 }
+        // { duration: "2m", target: 5000 },
+        // { duration: "2m", target: 8000 },
+        // { duration: "2m", target: 10000 },
+        // { duration: "60s", target: 8000 },
+        // { duration: "60s", target: 5000 },
+        // { duration: "30s", target: 1000 },
+        // { duration: "60s", target: 500 },
+        // { duration: "60s", target: 100 },
     ]
 };
 
@@ -19,7 +23,7 @@ export default function () {
     let res = http.get("http://localhost:3002/");
     check(res, {
         "status was 200": (r) => r.status == 200,
-        "transaction time OK": (r) => r.timings.duration < 200
+        "transaction time OK": (r) => r.timings.duration < 1000
     });
 
 

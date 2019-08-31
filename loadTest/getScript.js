@@ -11,7 +11,7 @@ export default function () {
     let res2 = http.get("http://localhost:3002/user/999990");
     check(res2, {
         "status was 200": (r) => r.status == 200,
-        "transaction time OK": (r) => r.timings.duration < 500
+        "transaction time OK": (r) => r.timings.duration < 1000
     });
 
 

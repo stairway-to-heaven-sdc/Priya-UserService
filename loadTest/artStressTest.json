@@ -1,0 +1,41 @@
+{
+    "config": {
+        "target": "http://localhost:3002/",
+        "phases": [
+            {
+                "duration": 60,
+                "arrivalRate": 10
+            },
+            {
+                "duration": 60,
+                "arrivalRate": 20
+            },
+            {
+                "duration": 60,
+                "arrivalRate": 50
+            }
+        ],
+        "defaults": {
+            "headers": {
+                "content-type": "application/json",
+                "x-my-service-auth": "987401838271002188298567"
+            }
+        }
+    },
+    "scenarios": [
+        {
+            "flow": [
+                {
+                    "loop": [
+                        {
+                            "get": {
+                                "url": "/"
+                            },
+                            "count": 100
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
