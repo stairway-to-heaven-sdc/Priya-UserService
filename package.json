@@ -53,7 +53,7 @@
     "express": "^4.17.0",
     "express-cassandra": "^2.3.0",
     "faker": "^4.1.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "mongodb": "^3.2.4",
     "mongoose": "^5.5.7",
     "newrelic": "^5.11.0",
